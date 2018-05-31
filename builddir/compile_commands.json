@@ -1,0 +1,17 @@
+[
+  {
+    "directory": "/home/so/Code/gaussian_cycle/builddir",
+    "command": "gfortran -Iprog@exe -I. -I.. -pipe -Wall -O0 -g -Werror -Wall -Wextra -Jprog@exe   -o 'prog@exe/src_gauss.f08.o' -c ../src/gauss.f08",
+    "file": "../src/gauss.f08"
+  },
+  {
+    "directory": "/home/so/Code/gaussian_cycle/builddir",
+    "command": "gfortran -Iprog@exe -I. -I.. -pipe -Wall -O0 -g -Werror -Wall -Wextra -Jprog@exe   -o 'prog@exe/src_utility.f08.o' -c ../src/utility.f08",
+    "file": "../src/utility.f08"
+  },
+  {
+    "directory": "/home/so/Code/gaussian_cycle/builddir",
+    "command": "gfortran -Iprog@exe -I. -I.. -pipe -Wall -O0 -g -Werror -Wall -Wextra -Jprog@exe   -o 'prog@exe/src_main.f08.o' -c ../src/main.f08",
+    "file": "../src/main.f08"
+  }
+]

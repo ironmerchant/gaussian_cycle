@@ -1,0 +1,14 @@
+Build started at 2018-05-28T21:32:16.022100
+Main binary: /usr/bin/python3
+Python system: Linux
+The Meson build system
+Version: 0.46.0
+Source dir: /home/so/Code/gaussian_cycle
+Build dir: /home/so/Code/gaussian_cycle/builddir
+Build type: native build
+Project name: distributed_bfs
+Native Fortran compiler: gfortran (gcc 5.4.0 "GNU Fortran (Ubuntu 5.4.0-6ubuntu1~16.04.9) 5.4.0 20160609")
+Build machine cpu family: x86_64
+Build machine cpu: x86_64
+Build targets in project: 1
+Found ninja-1.8.2 at /home/so/.local/bin/ninja
