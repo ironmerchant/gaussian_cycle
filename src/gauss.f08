@@ -31,9 +31,7 @@ module gauss
       do while ((row <= num_rows) .and. (column <= num_columns))
         if (matrix(row, column) == 0) then
           i_max = maxarg(matrix(:, column), row + 1)
-          if (matrix(i_max, column) == 1) then
-            call swap_rows(matrix, row, i_max)
-          endif
+          if (matrix(i_max, column) == 1) call swap_rows(matrix, row, i_max)
         endif
 
         if (matrix(row, column) == 1) then
