@@ -1,0 +1,9 @@
+# ninja log v5
+1	73	1527828345	prog@exe/src_gauss.f08.o	696f2012c852a2a
+74	76	1527828345	prog@exe/gauss.mod	486a3acadd116b47
+1	99	1527828345	prog@exe/src_utility.f08.o	6f45fdc455d7a2ff
+99	100	1527828345	prog@exe/utility.mod	486a3acadd116b47
+100	159	1527828345	prog@exe/src_main.f08.o	f0c5bd064c741e07
+160	279	1527828345	prog	440080d11ddcd297
+0	75	1527829921	prog@exe/src_main.f08.o	f0c5bd064c741e07
+75	193	1527829921	prog	440080d11ddcd297

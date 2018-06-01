@@ -1,13 +1,10 @@
 program myprog
-  use class_Stack
   use utility
   use gauss
-  use Rref
   implicit none
 
   integer, allocatable :: edge_matrix(:,:)
-  integer :: num_columns, num_rows
-  integer :: i, j
+  integer num_columns, num_rows, i, j
   print *, "Hello main"
   num_columns = 6
   num_rows = 5
@@ -22,7 +19,7 @@ program myprog
     write(*,"(10(I2,a))") (edge_matrix(j, i),',',i = 1, num_columns)
   enddo
 
-  call xorelimination(edge_matrix)
+  call echelon(edge_matrix)
 
   print *, "============================================"
 
