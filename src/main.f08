@@ -27,4 +27,12 @@ program myprog
     write(*,"(10(I2,a))") (edge_matrix(j, i),',',i = 1, num_columns)
   enddo
 
+  call backsolve(edge_matrix)
+
+  print *, "============================================"
+
+  do j=1, num_rows
+    write(*,"(10(I2,a))") (edge_matrix(j, i),',',i = 1, num_columns)
+  enddo
+
 end program myprog
