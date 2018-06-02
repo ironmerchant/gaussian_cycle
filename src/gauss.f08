@@ -2,17 +2,17 @@ module gauss
   implicit none
   contains
 
-    subroutine swap_rows(edge_matrix, i, j)
-      integer, dimension(:, :), intent(inout) :: edge_matrix
-      integer, allocatable, dimension(:) :: temp_row
+    subroutine swap_rows(matrix, i, j)
+      integer, intent(inout) :: matrix(:, :)
       integer, intent(in) :: i, j
-      temp_row = edge_matrix(j, :)
-      edge_matrix(j, :) = edge_matrix(i, :)
-      edge_matrix(i, :) = temp_row
+      integer, allocatable :: temp_row(:)
+      temp_row = matrix(j, :)
+      matrix(j, :) = matrix(i, :)
+      matrix(i, :) = temp_row
     endsubroutine swap_rows
 
     subroutine echelon(matrix)
-      integer, dimension(:, :), intent(inout) :: matrix
+      integer, intent(inout) :: matrix(:, :)
       integer :: num_rows, num_columns, column = 1, row = 1, i, i_max
       num_rows = size(matrix(:, 1))
       num_columns = size(matrix(1, :))
@@ -32,18 +32,14 @@ module gauss
     endsubroutine echelon
 
     subroutine backsolve(matrix)
-      integer, dimension(:, :), intent(inout) :: matrix
-      integer :: num_rows, num_columns, row, i, i_max
-      num_rows = size(matrix(:, 1))
-      num_columns = size(matrix(1, :))
-      do row = num_rows, 1, -1
+      integer, intent(inout) :: matrix(:, :)
+      integer :: row, i, i_max
+      do row = size(matrix(:,1)), 1, -1
         i_max = maxloc(matrix(row, :), row)
         if (matrix(row, i_max) == 1 ) then
-          matrix(row, i_max) = 0
           do i = row - 1, 1, -1
             if (matrix(i, i_max) == 1) then
-              matrix(i, i_max) = 0
-              matrix(i, :) = ieor(matrix(row, :), matrix(i, :))
+              matrix(i, :) = ieor(matrix(row, :), matrix(i,:))
             endif
           enddo
         endif
