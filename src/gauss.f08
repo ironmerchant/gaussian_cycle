@@ -1,5 +1,4 @@
 module gauss
-  use class_stack
   implicit none
   contains
 
