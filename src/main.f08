@@ -21,7 +21,6 @@ program myprog
   enddo
 
   call echelon(edge_matrix)
-
   call row_sort(edge_matrix)
 
   print *, "============================================"
@@ -31,7 +30,6 @@ program myprog
   enddo
 
   call backsolve(edge_matrix)
-
   test_ops = decode(edge_matrix)
 
   print *, "============================================"
