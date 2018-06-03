@@ -48,13 +48,8 @@ module gauss
       integer :: n, i, j, max_rowa, max_rowb
       n = size(matrix, dim=1)
 
-      ! Traverse through all array elements
       do i = 1, n
-        ! Last i elements are already in place
         do j = 1, n-i
-          ! traverse the array from 1 to n-i
-          ! Swap if the element found is greater
-          ! than the next element
           max_rowa = maxloc(matrix(j, :), 1)
           max_rowb = maxloc(matrix(j+1, :), 1)
           if (max_rowa > max_rowb) then
