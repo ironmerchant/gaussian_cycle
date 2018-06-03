@@ -3,8 +3,9 @@ program myprog
   use gauss
   implicit none
 
-  integer, allocatable :: edge_matrix(:,:)
+  integer, allocatable :: edge_matrix(:, :)
   integer num_columns, num_rows, i, j
+  integer, allocatable :: test_ops(:, :)
   print *, "Hello main"
   num_columns = 6
   num_rows = 5
@@ -33,6 +34,13 @@ program myprog
 
   do j=1, num_rows
     write(*,"(10(I2,a))") (edge_matrix(j, i),',',i = 1, num_columns)
+  enddo
+
+  test_ops = decode(edge_matrix)
+
+  print *, "============================================"
+  do j=1, num_columns
+    write(*,"(10(I2,a))") (test_ops(j, i),',',i = 1, num_columns)
   enddo
 
 end program myprog
