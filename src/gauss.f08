@@ -43,6 +43,28 @@ module gauss
       enddo
     endsubroutine
 
+    subroutine row_sort(matrix)
+      integer, intent(inout) :: matrix(:, :)
+      integer :: n, i, j, max_rowa, max_rowb
+      n = size(matrix, dim=1)
+
+      ! Traverse through all array elements
+      do i = 1, n
+        ! Last i elements are already in place
+        do j = 1, n-i
+          ! traverse the array from 1 to n-i
+          ! Swap if the element found is greater
+          ! than the next element
+          max_rowa = maxloc(matrix(j, :), 1)
+          max_rowb = maxloc(matrix(j+1, :), 1)
+          if (max_rowa > max_rowb) then
+            call swap_rows(matrix, j, j+1)
+          endif
+        enddo
+      enddo
+    endsubroutine row_sort
+
+
     pure function decode(matrix) result(out_matrix)
       integer, intent(in) :: matrix(:, :)
       integer, allocatable :: out_matrix(:, :)
@@ -75,6 +97,11 @@ module gauss
       enddo
 
       out_matrix = transpose(out_matrix)
+      do col = 1, num_cols
+        if (all(out_matrix(col, :) == 0)) then
+          out_matrix(col, col) = 1
+        endif
+      enddo
     endfunction decode
 
 end module gauss

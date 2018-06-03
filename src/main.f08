@@ -7,7 +7,7 @@ program myprog
   integer num_columns, num_rows, i, j
   integer, allocatable :: test_ops(:, :)
   print *, "Hello main"
-  num_columns = 6
+  num_columns = 10
   num_rows = 5
   allocate(edge_matrix(num_rows, num_columns))
   do i = 1, num_rows
@@ -21,6 +21,14 @@ program myprog
   enddo
 
   call echelon(edge_matrix)
+
+  print *, "============================================"
+
+  do j=1, num_rows
+    write(*,"(10(I2,a))") (edge_matrix(j, i),',',i = 1, num_columns)
+  enddo
+
+  call row_sort(edge_matrix)
 
   print *, "============================================"
 
