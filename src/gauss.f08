@@ -32,7 +32,7 @@ module gauss
     subroutine backsolve(matrix)
       integer, intent(inout) :: matrix(:, :)
       integer :: row, i, i_max
-      do row = size(matrix(:,1)), 1, -1
+      do row = size(matrix, dim=1), 1, -1
         i_max = maxloc(matrix(row, :), row)
         if (matrix(row, i_max) == 1 ) then
           do i = row - 1, 1, -1
@@ -49,8 +49,8 @@ module gauss
       integer, allocatable :: out_matrix(:, :)
       integer :: row, column, num_cols, num_rows, i_max
 
-      num_cols = size(matrix(1, :))
-      num_rows = size(matrix(:, 1))
+      num_cols = size(matrix, dim=2)
+      num_rows = size(matrix, dim=1)
       allocate(out_matrix(num_cols, num_cols))
       out_matrix(:, :) = 0
 
