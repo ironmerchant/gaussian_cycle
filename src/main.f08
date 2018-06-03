@@ -6,7 +6,6 @@ program myprog
   integer, allocatable :: edge_matrix(:, :)
   integer num_columns, num_rows, i, j
   integer, allocatable :: test_ops(:, :)
-  print *, "Hello main"
   num_columns = 70
   num_rows = 140
   allocate(edge_matrix(num_rows, num_columns))
