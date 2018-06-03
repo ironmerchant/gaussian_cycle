@@ -44,9 +44,10 @@ module gauss
       enddo
     endsubroutine
 
-    function decode(matrix) result(out_matrix)
-      integer, intent(inout) :: matrix(:, :)
+    pure function decode(matrix) result(out_matrix)
+      integer, intent(in) :: matrix(:, :)
       integer, allocatable :: out_matrix(:, :)
+      integer, allocatable :: temp_vector(:)
       integer :: row, column, num_cols, num_rows, i_max
 
       num_cols = size(matrix, dim=2)
@@ -62,12 +63,14 @@ module gauss
 
       do row = 1, num_rows
         if (matrix(row, row) == 1) then
-          matrix(row, row) = 0
-          out_matrix(:, row) = ieor(matrix(row, :), out_matrix(:, row))
+          temp_vector = matrix(row,:)
+          temp_vector(row) = 0
+          out_matrix(:, row) = ieor(temp_vector, out_matrix(:, row))
         elseif (any(matrix(row, :) == 1)) then
           i_max = maxloc(matrix(row, :), 1)
-          matrix(row, i_max) = 0
-          out_matrix(:, i_max) = ieor(matrix(row, :), out_matrix(:, i_max))
+          temp_vector = matrix(row,:)
+          temp_vector(i_max) = 0
+          out_matrix(:, i_max) = ieor(temp_vector, out_matrix(:, i_max))
         else
           out_matrix(row, row) = 1
         endif
