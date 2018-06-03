@@ -22,12 +22,6 @@ program myprog
 
   call echelon(edge_matrix)
 
-  print *, "============================================"
-
-  do j=1, num_rows
-    write(*,"(10(I2,a))") (edge_matrix(j, i),',',i = 1, num_columns)
-  enddo
-
   call row_sort(edge_matrix)
 
   print *, "============================================"
@@ -37,12 +31,6 @@ program myprog
   enddo
 
   call backsolve(edge_matrix)
-
-  print *, "============================================"
-
-  do j=1, num_rows
-    write(*,"(10(I2,a))") (edge_matrix(j, i),',',i = 1, num_columns)
-  enddo
 
   test_ops = decode(edge_matrix)
 
