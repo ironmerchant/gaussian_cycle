@@ -48,20 +48,19 @@ module gauss
       integer, intent(in) :: matrix(:, :)
       integer, allocatable :: out_matrix(:, :)
       integer, allocatable :: temp_vector(:)
-      integer :: row, column, num_cols, num_rows, i_max
+      integer :: col, row, num_cols, i_max
 
       num_cols = size(matrix, dim=2)
-      num_rows = size(matrix, dim=1)
       allocate(out_matrix(num_cols, num_cols))
       out_matrix(:, :) = 0
 
-      do column = 1, num_cols
-        if (all(matrix(:, column) == 0)) then
-          out_matrix(column, column) = 1
+      do col = 1, num_cols
+        if (all(matrix(:, col) == 0)) then
+          out_matrix(col, col) = 1
         endif
       enddo
 
-      do row = 1, num_rows
+      do row = 1, size(matrix, dim=1)
         if (matrix(row, row) == 1) then
           temp_vector = matrix(row,:)
           temp_vector(row) = 0
