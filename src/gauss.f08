@@ -59,7 +59,6 @@ module gauss
       enddo
     endsubroutine row_sort
 
-
     pure function decode(matrix) result(out_matrix)
       integer, intent(in) :: matrix(:, :)
       integer, allocatable :: out_matrix(:, :)
